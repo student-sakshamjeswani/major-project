@@ -7,9 +7,20 @@ const multer  = require('multer');
 const {storage} = require('../cloudConfig.js');
 const upload = multer({ storage });
 
-router.route("/")
-.get(wrapAsync(listingController.index))
-.post(isLoggedIn, validateListing, upload.single('listing[image][url]'), wrapAsync(listingController.createListing));
+// All listings + search stays separate
+router.get("/", wrapAsync(listingController.index));
+
+// Search route
+router.get("/search", wrapAsync(listingController.search));
+
+// Create listing
+router.post(
+  "/",
+  isLoggedIn,
+  validateListing,
+  upload.single("listing[image][url]"),
+  wrapAsync(listingController.createListing)
+);
 
 // New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
