@@ -46,7 +46,12 @@ const listingSchema = new Schema({
         type: [Number],
         // required: true
       }
-    }
+    },
+    category: {
+    type: String,
+    default: "trending"
+  }
+
 });
 
 listingSchema.post("findOneAndDelete", async (listing) => {

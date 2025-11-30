@@ -33,60 +33,75 @@
     }
 </style>
 <div id="filters">
-    <div class="filter">
+
+    <div class="filter" data-category="trending">
         <div><i class="fa-solid fa-fire"></i></div>
         <p>Trending</p>
     </div>
-    <div class="filter">
+
+    <div class="filter" data-category="rooms">
         <div><i class="fa-solid fa-bed"></i></div>
         <p>Rooms</p>
     </div>
-    <div class="filter">
+
+    <div class="filter" data-category="iconic-cities">
         <div><i class="fa-solid fa-mountain-city"></i></div>
         <p>Iconic Cities</p>
     </div>
-    <div class="filter">
+
+    <div class="filter" data-category="mountains">
         <div><i class="fa-solid fa-mountain"></i></div>
         <p>Mountains</p>
     </div>
-    <div class="filter">
+
+    <div class="filter" data-category="castles">
         <div><i class="fa-brands fa-fort-awesome"></i></div>
         <p>Castles</p>
     </div>
-    <div class="filter">
+
+    <div class="filter" data-category="pools">
         <div><i class="fa-solid fa-person-swimming"></i></div>
         <p>Amazing Pools</p>
     </div>
-      <div class="filter">
+
+    <div class="filter" data-category="camping">
         <div><i class="fa-solid fa-campground"></i></div>
         <p>Camping</p>
     </div>
-    <div class="filter">
+
+    <div class="filter" data-category="farms">
         <div><i class="fa-solid fa-cow"></i></div>
         <p>Farms</p>
     </div>
-    <div class="filter">
-        <div><i class="fa-regular fa-snowflake"></i></div>
-        <p>Arctic</p>
+
+    <div class="filter" data-category="beachfront">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beachfront</p>
     </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-igloo"></i></div>
-        <p>Domes</p>
+
+    <div class="filter" data-category="islands">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Islands</p>
     </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-ferry"></i></div>
-        <p>Boats</p>
+
+    <div class="filter" data-category="cabins">
+        <div><i class="fa-solid fa-house-chimney"></i></div>
+        <p>Cabins</p>
     </div>
+
     <div class="tax-toggle">
         <div class="form-switch form-check-reverse">
             <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
             <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
         </div>
     </div>
+
 </div>
+
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 listing-card mt-3">
     <% for(let listing of allListings){  %>
+        <% if (listing.category === category || !category) { %>
         <a href="/listings/<%= listing._id %>" class="listing-link">
             <div class="card col listing-card">
                 <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem;">
@@ -99,6 +114,7 @@
                 </div>
             </div>
         </a>
+        <% }  %>
     <% } %>
 </div>
 
@@ -117,4 +133,15 @@
             }
         });
     });
+
+    let filterDivs = document.querySelectorAll(".filter");
+
+    filterDivs.forEach(div => {
+        div.addEventListener("click", () => {
+            let category = div.dataset.category;
+            window.location.href = `/listings?category=${category}`;
+        });
+    });
+
+
 </script>

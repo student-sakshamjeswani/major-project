@@ -2,9 +2,12 @@ const Listing = require("../models/listing");
 const forwardGeocode = require("../utils/geocode");
 
 module.exports.index = async (req, res) => {
+    let category = req.query.category;
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings});
+
+    res.render("listings/index.ejs", {allListings , category});
 };
+
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs");
 };
@@ -15,7 +18,8 @@ module.exports.showListing = async (req, res) => {
         req.flash("error", "Listing you requested for does not exist!");
         return res.redirect("/listings");
     }
-    res.render("listings/show.ejs", {listing});
+
+    res.render("listings/show.ejs", {listing });
 };
 module.exports.createListing = async (req, res, next) => {
     // 1. Get user location input
@@ -97,5 +101,5 @@ module.exports.search = async (req, res) => {
         listings = await Listing.find({});
     }
 
-    res.render("listings/index.ejs", { allListings: listings });
+    res.render("listings/index.ejs", { allListings: listings, category: null  });
 };
