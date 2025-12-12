@@ -79,9 +79,6 @@ app.use((req, res, next) => {
 });
 
 app.get("/", async (req, res) => {
-    const allListings = await Listing.find({});
-
-    console.log("category:", allListings);
     res.redirect("/listings");
 });
 

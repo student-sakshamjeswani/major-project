@@ -24,35 +24,58 @@ body{
 }
 
 /* footer */
-.f-info-links a{
-    text-decoration: none;
-    color: #222;
-}
-
-.f-info-links a:hover{
-    text-decoration: underline;
-}
-
 .f-info{
-    text-align: center;
     height: 8rem;
     display: flex;
     background-color: #ebebeb;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px 30px;
 }
 
-.f-info-links, .f-info-socials, .f-info-brand{
-    width: 100%;
+.f-info-left {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.f-info-socials i{
-    font-size: 1.2rem;
-    margin-right: 1rem;
+.f-info-brand {
+    font-size: 14px;
+    color: #222;
+    order: 1;
+}
+
+/* Links */
+.f-info-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    order: 1;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+/* RIGHT SIDE SOCIAL ICONS */
+.f-info-socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    order: 2;
+}
+
+.f-info-socials i {
+    font-size: 1.4rem;
+    cursor: pointer;
 }
 
 /* Cards */
