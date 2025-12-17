@@ -82,6 +82,14 @@ app.get("/", async (req, res) => {
     res.redirect("/listings");
 });
 
+app.get("/privacy", (req, res) => {
+  res.render("legals/privacy");
+});
+
+app.get("/terms", (req, res) => {
+  res.render("legals/terms");
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);

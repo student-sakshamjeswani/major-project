@@ -31,7 +31,7 @@ body{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 24px 30px;
+    padding: 24px 32px;
 }
 
 .f-info-left {
@@ -69,13 +69,14 @@ body{
 .f-info-socials {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     order: 2;
 }
 
 .f-info-socials i {
-    font-size: 1.4rem;
+    font-size: 1.03rem;
     cursor: pointer;
+    color: #222;
 }
 
 /* Cards */
