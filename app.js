@@ -15,7 +15,6 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-const Listing = require("./models/listing.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
@@ -26,7 +25,7 @@ main().then(() => {
     console.log("Connected to DB"); 
 })
 .catch((err) => {
-    console.log(err);
+    console.log(err.message);
 }); 
 
 async function main() {
@@ -41,7 +40,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    client: mongoose.connection.getClient(),
     touchAfter: 24 * 3600 // time period in seconds
 });
 
@@ -105,6 +104,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(8080, () => {
-    console.log("server is listening to port 8080");
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`server is listening to port ${PORT}`);
 });
