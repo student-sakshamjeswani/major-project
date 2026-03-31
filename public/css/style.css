@@ -130,8 +130,18 @@ body{
     height: 30vh;
 }
 
-.btns{
-    display: flex;
+.btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-start; 
+}
+
+.btns a,
+.btns button {
+  flex: unset;        
+  width: auto;        
+  padding: 8px 20px; 
 }
 
 .show-card{
@@ -149,6 +159,6 @@ body{
 /* Map */
 #map{
     height: 400px;
-    width: 90vh;
+    width: 100%;
 }
 
